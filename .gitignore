@@ -1,0 +1,25 @@
+# Python
+__pycache__/
+*.pyc
+venv/
+qenv/
+Lib/
+Scripts/
+env/
+
+# Excel temporary files
+~$*.xlsx
+
+# Temporary runtime files
+backend/tmp/
+
+# OS
+Thumbs.db
+
+# Env
+.env
+
+# Zip
+*.zip
+
+backend/creditcard.csv
