@@ -1,39 +1,51 @@
 # Quantum Fraud Detection using Quantum Machine Learning (QML)
 
-A Flask-based fraud detection system that combines Classical Machine Learning and Quantum Machine Learning (QML) techniques for anomaly detection on financial transaction datasets.
+A Flask-based fraud detection system that combines **Classical Machine Learning** and **Quantum Machine Learning (QML)** techniques for anomaly detection on financial transaction datasets.
 
-The project supports:
+---
 
-Classical anomaly detection using Isolation Forest
-Experimental quantum similarity scoring using Qiskit Quantum Kernels
-REST API-based backend architecture
-CSV-based batch fraud analysis
-Features
-Upload transaction datasets using REST APIs
-Fraud detection using:
-Classical ML mode
-Quantum ML mode
-Anomaly score generation
-Fraud/Normal classification
-Confidence score calculation
-CSV result export
-Quantum kernel similarity analysis using Qiskit
-Tech Stack
-Backend
-Flask
-REST APIs
-Python
-Machine Learning
-Scikit-learn
-Isolation Forest
-PCA
-NumPy
-Pandas
-Quantum Machine Learning
-Qiskit
-Quantum Kernels
-ZZFeatureMap
-Project Architecture
+## Features
+
+- Classical anomaly detection using Isolation Forest
+- Experimental quantum similarity scoring using Qiskit Quantum Kernels
+- REST API-based backend architecture
+- CSV-based batch fraud analysis
+- Upload transaction datasets using REST APIs
+- Fraud detection using:
+  - Classical ML mode
+  - Quantum ML mode
+- Anomaly score generation
+- Fraud/Normal classification
+- Confidence score calculation
+- CSV result export
+- Quantum kernel similarity analysis using Qiskit
+
+---
+
+## Tech Stack
+
+### Backend
+- Flask
+- REST APIs
+- Python
+
+### Machine Learning
+- Scikit-learn
+- Isolation Forest
+- PCA
+- NumPy
+- Pandas
+
+### Quantum Machine Learning
+- Qiskit
+- Quantum Kernels
+- ZZFeatureMap
+
+---
+
+## Project Architecture
+
+```text
 Client
    |
    v
@@ -56,130 +68,226 @@ Flask REST API
    +---- Fraud Prediction + Confidence Score
    |
    +---- JSON Response + CSV Export
-API Endpoints
-1. Upload Dataset
-Endpoint
+```
+
+---
+
+## API Endpoints
+
+### 1. Upload Dataset
+
+#### Endpoint
+
+```http
 POST /upload
-Description
+```
+
+#### Description
 
 Uploads a CSV transaction dataset.
 
-Response
+#### Response
+
+```json
 {
   "file_id": "generated_uuid"
 }
-2. Run Fraud Detection
-Endpoint
+```
+
+---
+
+### 2. Run Fraud Detection
+
+#### Endpoint
+
+```http
 POST /run
-Request Body
+```
+
+#### Request Body
+
+```json
 {
   "file_id": "uuid",
   "mode": "classical"
 }
+```
 
 or
 
+```json
 {
   "file_id": "uuid",
   "mode": "quantum"
 }
-Description
+```
+
+#### Description
 
 Runs fraud detection using the selected mode.
 
-3. Get Results
-Endpoint
+---
+
+### 3. Get Results
+
+#### Endpoint
+
+```http
 GET /results/<file_id>
-Description
+```
+
+#### Description
 
 Returns processed fraud detection results.
 
-Classical Machine Learning Mode
+---
+
+# Classical Machine Learning Mode
 
 The classical pipeline uses:
 
-Isolation Forest
+## Isolation Forest
 
 Isolation Forest is an unsupervised anomaly detection algorithm.
 
-Why Isolation Forest?
-Fraud datasets are highly imbalanced
-Does not require labeled fraud data
-Efficient for anomaly detection
-Scalable for large datasets
-Working Principle
-Randomly partitions data
-Anomalies are easier to isolate
-Suspicious transactions receive lower anomaly scores
-Quantum Machine Learning Mode
+### Why Isolation Forest?
 
-The quantum pipeline uses Quantum Kernel-based Similarity Scoring.
+- Fraud datasets are highly imbalanced
+- Does not require labeled fraud data
+- Efficient for anomaly detection
+- Scalable for large datasets
 
-Quantum Feature Encoding
+### Working Principle
+
+- Randomly partitions data
+- Anomalies are easier to isolate
+- Suspicious transactions receive lower anomaly scores
+
+---
+
+# Quantum Machine Learning Mode
+
+The quantum pipeline uses **Quantum Kernel-based Similarity Scoring**.
+
+---
+
+## Quantum Feature Encoding
 
 Classical transaction vectors are encoded into quantum states using:
 
-ZZFeatureMap
+### ZZFeatureMap
 
 ZZFeatureMap:
 
-Encodes feature values into quantum rotations
-Introduces entanglement between qubits
-Captures feature interactions
-PCA Dimensionality Reduction
+- Encodes feature values into quantum rotations
+- Introduces entanglement between qubits
+- Captures feature interactions
+
+---
+
+## PCA Dimensionality Reduction
 
 Quantum circuits have dimensional limitations.
 
 PCA is applied to:
 
-Reduce feature dimensions
-Preserve important variance
-Improve quantum processing feasibility
-Quantum Kernel Matrix
+- Reduce feature dimensions
+- Preserve important variance
+- Improve quantum processing feasibility
+
+---
+
+## Quantum Kernel Matrix
 
 The system computes similarity between quantum-encoded transaction states.
 
-Workflow
-Encode transactions into quantum states
-Compute pairwise similarity
-Build quantum kernel matrix
-Generate anomaly scores
+### Workflow
+
+1. Encode transactions into quantum states
+2. Compute pairwise similarity
+3. Build quantum kernel matrix
+4. Generate anomaly scores
 
 Lower similarity indicates higher anomaly probability.
 
-Data Preprocessing
+---
+
+## Data Preprocessing
 
 The preprocessing pipeline includes:
 
-Numeric feature extraction
-Missing value handling
-NumPy array conversion
-Feature engineering
-PCA dimensionality reduction
-Fraud Classification
+- Numeric feature extraction
+- Missing value handling
+- NumPy array conversion
+- Feature engineering
+- PCA dimensionality reduction
+
+---
+
+## Fraud Classification
 
 The generated anomaly scores are:
 
-Normalized between 0 and 1
-Compared against a threshold
-Classified as:
-Fraud
-Normal
+- Normalized between 0 and 1
+- Compared against a threshold
+- Classified as:
+  - Fraud
+  - Normal
 
 Confidence scores are also generated.
 
-Installation
-Clone Repository
+---
+
+# Installation
+
+## Clone Repository
+
+```bash
 git clone https://github.com/nikhila2311/Quantum-Fraud-Detetcion.git
+```
+
+```bash
 cd Quantum-Fraud-Detetcion
-Create Virtual Environment
+```
+
+---
+
+## Create Virtual Environment
+
+```bash
 python -m venv venv
-Activate Environment
-Windows
+```
+
+---
+
+## Activate Environment
+
+### Windows
+
+```bash
 venv\Scripts\activate
-Linux / Mac
+```
+
+### Linux / Mac
+
+```bash
 source venv/bin/activate
-Install Dependencies
+```
+
+---
+
+## Install Dependencies
+
+```bash
 pip install -r requirements.txt
-Run Application
+```
+
+---
+
+## Run Application
+
+```bash
 python app.py
+```
+
+---
